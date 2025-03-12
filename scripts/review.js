@@ -1,12 +1,14 @@
-var hikeDocID = localStorage.getItem("hikeDocID");    //visible to all functions on this page
 
-function saveHikeDocumentIDAndRedirect(){
-    let params = new URL(window.location.href) //get the url from the search bar
-    let ID = params.searchParams.get("docID");
-    localStorage.setItem('hikeDocID', ID);
-    window.location.href = 'review.html';
+var ID;
+
+function saveHikeDocumentIDAndRedirect(ID){
+  this.ID = ID.getElementById("id");
+  console.log("ID CLICKED: "  + ID);
+  localStorage.setItem('hikeDocID', ID);
+  window.location.href = 'review.html';
 }
 
+var hikeDocID = localStorage.getItem("hikeDocID");    //visible to all functions on this page
 function getHikeName(id) {
     db.collection("hikes")
       .doc(id)
